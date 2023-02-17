@@ -42,10 +42,9 @@ const expressionToRPN = (
   variableIdToValuesMap: Map<string, string>
 ): StackElement[] => {
   if ('rules' in expression) {
-    const rpn: StackElement[] = [];
-    transformToBinaryOperators(expression).rules.forEach(rule => {
-      rpn.push(...expressionToRPN(rule, variableIdToValuesMap));
-    });
+    const rpn = transformToBinaryOperators(expression).rules.flatMap(rule =>
+      expressionToRPN(rule, variableIdToValuesMap)
+    );
 
     const [left, right] = rpn.splice(-2, 2);
     rpn.push(invokeJoinerMap[expression.joiner]({left, right}));
