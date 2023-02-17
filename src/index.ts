@@ -4,7 +4,7 @@ export type Rule = {
   value: string;
 };
 export type Expression = {
-  joiner: 'OR' | 'AND';
+  joiner?: 'OR' | 'AND';
   rules: (Expression | Rule)[];
 };
 export type VariableWithValue = {id: string; value: string};
@@ -13,8 +13,9 @@ type StackElement = boolean | 'OR' | 'AND';
 type JoinerParameters = {left: StackElement; right: StackElement};
 
 const invokeJoinerMap = {
-  OR: ({left, right}: JoinerParameters) => left || right,
-  AND: ({left, right}: JoinerParameters) => left && right,
+  OR: ({left, right}: JoinerParameters) => !!(left || right),
+  AND: ({left, right}: JoinerParameters) => !!(left && right),
+  default: ({left}: JoinerParameters) => !!left,
 };
 
 type RuleParameters = {passedValue: string | undefined; comparedValue: string};
@@ -47,15 +48,23 @@ const expressionToRPN = (
     );
 
     const [left, right] = rpn.splice(-2, 2);
-    rpn.push(invokeJoinerMap[expression.joiner]({left, right}));
+
+    if (expression.joiner && right === undefined) {
+      throw new Error(`Invalid expression with joiner ${expression.joiner}, right side is missing`);
+    }
+
+    rpn.push(invokeJoinerMap[expression.joiner ?? 'default']({left, right}));
 
     return rpn;
   }
 
+  const passedValue = variableIdToValuesMap.get(expression.variableId);
+  const comparedValue = expression.value;
+
   return [
     invokeRuleMap[expression.operator]({
-      passedValue: variableIdToValuesMap.get(expression.variableId),
-      comparedValue: expression.value,
+      passedValue,
+      comparedValue,
     }),
   ];
 };
