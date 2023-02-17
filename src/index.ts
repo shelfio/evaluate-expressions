@@ -39,12 +39,12 @@ export const evaluateExpression = (
 };
 const expressionToRPN = (
   expression: Expression | Rule,
-  variableIdToVariablesMap: Map<string, string>
+  variableIdToValuesMap: Map<string, string>
 ): StackElement[] => {
   if ('rules' in expression) {
     const rpn: StackElement[] = [];
     transformToBinaryOperators(expression).rules.forEach(rule => {
-      rpn.push(...expressionToRPN(rule, variableIdToVariablesMap));
+      rpn.push(...expressionToRPN(rule, variableIdToValuesMap));
     });
 
     const [left, right] = rpn.splice(-2, 2);
@@ -55,7 +55,7 @@ const expressionToRPN = (
 
   return [
     invokeRuleMap[expression.operator]({
-      passedValue: variableIdToVariablesMap.get(expression.variableId),
+      passedValue: variableIdToValuesMap.get(expression.variableId),
       comparedValue: expression.value,
     }),
   ];
