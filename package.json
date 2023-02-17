@@ -1,11 +1,11 @@
 {
-  "name": "@shelf/xxxxxx",
+  "name": "@shelf/evaluate-expressions",
   "version": "0.0.0",
-  "description": "xxxxxx",
+  "description": "Evaluate expressions that consist of multiple rules and joiners.",
   "license": "MIT",
   "author": {
-    "name": "Vlad Holubiev",
-    "email": "vlad@shelf.io",
+    "name": "Andrii Bakanov",
+    "email": "andrii.bakanov@shelf.io",
     "url": "https://shelf.io"
   },
   "main": "lib",
