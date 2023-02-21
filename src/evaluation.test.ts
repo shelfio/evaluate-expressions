@@ -190,6 +190,7 @@ describe('expressionToRPN', () => {
       joiner: 'AND',
       rules: [
         baseExpression,
+        singleRuleExpression,
         {
           joiner: 'OR',
           rules: [
@@ -216,6 +217,7 @@ describe('expressionToRPN', () => {
       joiner: 'AND',
       rules: [
         baseExpression,
+        singleRuleExpression,
         {
           joiner: 'AND',
           rules: [
