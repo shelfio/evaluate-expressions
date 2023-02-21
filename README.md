@@ -22,7 +22,7 @@ const expression: Expression = {
       rules: [
         {
           variableId: 'variable-id-c',
-          operator: 'eq',
+          operator: 'neq',
           value: 'c',
         },
         {
