@@ -17,3 +17,5 @@ export const evaluateExpression = (
 
   return result;
 };
+
+export type {Expression, Rule} from './types';
