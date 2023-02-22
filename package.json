@@ -2,6 +2,20 @@
   "name": "@shelf/evaluate-expressions",
   "version": "1.0.1",
   "description": "Evaluate expressions that consist of multiple rules and joiners.",
+  "keywords": [
+    "evaluate",
+    "expressions",
+    "rules",
+    "joiners"
+  ],
+  "homepage": "https://github.com/shelfio/evaluate-expressions#readme",
+  "bugs": {
+    "url": "https://github.com/shelfio/evaluate-expressionsl/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shelfio/evaluate-expressions.git"
+  },
   "license": "MIT",
   "author": {
     "name": "Andrii Bakanov",
