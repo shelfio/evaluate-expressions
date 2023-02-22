@@ -1,6 +1,6 @@
 {
   "name": "@shelf/evaluate-expressions",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Evaluate expressions that consist of multiple rules and joiners.",
   "keywords": [
     "evaluate",
