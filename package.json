@@ -1,6 +1,6 @@
 {
   "name": "@shelf/evaluate-expressions",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Evaluate expressions that consist of multiple rules and joiners.",
   "license": "MIT",
   "author": {
