@@ -16,6 +16,7 @@ export const ruleHandlers = {
   not_contains: ({passedValue, comparedValue}: RuleParameters) =>
     passedValue?.includes(comparedValue) === false,
 };
+
 export const expressionToRPN = (
   expression: Expression | Rule,
   variableIdToValuesMap: Map<string, string>
