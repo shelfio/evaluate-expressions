@@ -13,15 +13,11 @@ export const validateJoinerInvoke = ({
 };
 
 export const validateRuleInvoke = ({
-  passedValue,
-  variableId,
   operator,
   comparedValue,
 }: {
   comparedValue: string;
   operator?: Rule['operator'];
-  passedValue?: string;
-  variableId: string;
 }) => {
   if (comparedValue === undefined) {
     throw new Error(`Invalid Rule compared value not exist`, {
@@ -31,12 +27,6 @@ export const validateRuleInvoke = ({
 
   if (operator === undefined) {
     throw new Error(`Invalid Rule operator not exist`, {
-      cause: 'invalid-expression',
-    });
-  }
-
-  if (passedValue === undefined) {
-    throw new Error(`Invalid passed variable value with id: ${variableId}`, {
       cause: 'invalid-expression',
     });
   }

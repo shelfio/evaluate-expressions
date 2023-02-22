@@ -127,6 +127,22 @@ describe('expressionToRPN', () => {
     expect(expressionToRPN(expression, variablesValueMap)).toEqual([false]);
   });
 
+  it('should return `[false]` when variables value not passed', () => {
+    const variablesValueMap = new Map();
+
+    const expression: Expression = {
+      rules: [
+        {
+          variableId: 'variable-id-a',
+          operator: 'eq',
+          value: 'a',
+        },
+      ],
+    };
+
+    expect(expressionToRPN(expression, variablesValueMap)).toEqual([false]);
+  });
+
   const variableValueSomething = new Map([['variable-id-a', 'something']]);
 
   it('should return `[true]` for expression and `contains` rule', () => {

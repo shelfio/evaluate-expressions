@@ -28,8 +28,6 @@ describe('validateRuleInvoke', () => {
       validateRuleInvoke({
         comparedValue: undefined as any,
         operator: 'eq',
-        passedValue: 'a',
-        variableId: 'variable-id-a',
       })
     ).toThrow('Invalid Rule compared value not exist');
   });
@@ -39,20 +37,7 @@ describe('validateRuleInvoke', () => {
       validateRuleInvoke({
         comparedValue: 'a',
         operator: undefined as any,
-        passedValue: 'a',
-        variableId: 'variable-id-a',
       })
     ).toThrow('Invalid Rule operator not exist');
-  });
-
-  it('should throw error if passedValue is undefined', () => {
-    expect(() =>
-      validateRuleInvoke({
-        comparedValue: 'a',
-        operator: 'eq',
-        passedValue: undefined as any,
-        variableId: 'variable-id-a',
-      })
-    ).toThrow('Invalid passed variable value with id: variable-id-a');
   });
 });

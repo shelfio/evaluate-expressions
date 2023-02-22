@@ -38,7 +38,7 @@ export const expressionToRPN = (
   const {variableId, operator, value: comparedValue} = expression;
   const passedValue = variableIdToValuesMap.get(variableId);
 
-  validateRuleInvoke({operator, comparedValue, passedValue, variableId});
+  validateRuleInvoke({operator, comparedValue});
 
   return [
     ruleHandlers[operator]({
