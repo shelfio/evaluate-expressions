@@ -8,14 +8,7 @@
     "rules",
     "joiners"
   ],
-  "homepage": "https://github.com/shelfio/evaluate-expressions#readme",
-  "bugs": {
-    "url": "https://github.com/shelfio/evaluate-expressionsl/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/shelfio/evaluate-expressions.git"
-  },
+  "repository": "shelfio/evaluate-expressions",
   "license": "MIT",
   "author": {
     "name": "Andrii Bakanov",

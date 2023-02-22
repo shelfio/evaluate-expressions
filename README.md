@@ -33,8 +33,13 @@ const expression: Expression = {
       ],
     },
     {
+      variableId: 'variable-id-b',
+      operator: 'not_contains',
+      value: 'some',
+    },
+    {
       variableId: 'variable-id-a',
-      operator: 'eq',
+      operator: 'contains',
       value: 'a',
     },
   ],
@@ -43,7 +48,7 @@ const expression: Expression = {
 const variablesWithValue = [
   {
     id: 'variable-id-a',
-    value: 'a',
+    value: 'some-a',
   },
   {
     id: 'variable-id-b',
@@ -61,7 +66,6 @@ console.log(result); // true
 ```
 
 ````
-
 ## Publish
 
 ```sh
