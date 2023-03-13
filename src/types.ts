@@ -4,10 +4,10 @@ export type Rule = {
   value: string;
 };
 export type Expression = {
-  joiner?: 'OR' | 'AND';
+  joiner?: 'or' | 'and';
   rules: (Expression | Rule)[];
 };
 export type VariableWithValue = {id: string; value: string};
 export type JoinerParameters = {left: StackElement; right: StackElement};
-export type StackElement = boolean | 'OR' | 'AND';
+export type StackElement = boolean | Expression['joiner'];
 export type RuleParameters = {passedValue?: string; comparedValue: string};

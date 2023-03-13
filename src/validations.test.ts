@@ -4,21 +4,21 @@ describe('validateJoinerInvoke', () => {
   it('should throw error if joiner is not SINGLE and left is undefined', () => {
     expect(() =>
       validateJoinerInvoke({
-        joiner: 'AND',
+        joiner: 'and',
         left: true,
         right: undefined as any,
       })
-    ).toThrow('Invalid Joiner expression "true AND undefined"');
+    ).toThrow('Invalid Joiner expression "true and undefined"');
   });
 
   it('should throw error if joiner is not SINGLE and right is undefined', () => {
     expect(() =>
       validateJoinerInvoke({
-        joiner: 'AND',
+        joiner: 'and',
         left: undefined as any,
         right: true,
       })
-    ).toThrow('Invalid Joiner expression "undefined AND true"');
+    ).toThrow('Invalid Joiner expression "undefined and true"');
   });
 });
 
