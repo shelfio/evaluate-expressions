@@ -15,10 +15,10 @@ import type {Expression} from '@shelf/evaluate-expressions';
 import {evaluateExpression} from '@shelf/evaluate-expressions';
 
 const expression: Expression = {
-  joiner: 'AND',
+  joiner: 'and',
   rules: [
     {
-      joiner: 'OR',
+      joiner: 'or',
       rules: [
         {
           variableId: 'variable-id-c',
