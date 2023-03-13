@@ -3,9 +3,9 @@ import type {JoinerParameters, RuleParameters} from './types';
 import {validateJoinerInvoke, validateRuleInvoke} from './validations';
 
 export const joinerHandlers = {
-  OR: ({left, right}: JoinerParameters) => Boolean(left || right),
-  AND: ({left, right}: JoinerParameters) => Boolean(left && right),
-  SINGLE: ({left}: JoinerParameters) => Boolean(left),
+  or: ({left, right}: JoinerParameters) => Boolean(left || right),
+  and: ({left, right}: JoinerParameters) => Boolean(left && right),
+  single: ({left}: JoinerParameters) => Boolean(left),
 };
 
 export const ruleHandlers = {
@@ -31,7 +31,7 @@ export const expressionToRPN = (
 
     validateJoinerInvoke({joiner, left, right});
 
-    rpn.push(joinerHandlers[joiner ?? 'SINGLE']({left, right}));
+    rpn.push(joinerHandlers[joiner ?? 'single']({left, right}));
 
     return rpn;
   }

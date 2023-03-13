@@ -2,10 +2,10 @@ import type {Expression} from './types';
 import {expressionToRPN} from './evaluation';
 
 const baseExpression: Expression = {
-  joiner: 'AND',
+  joiner: 'and',
   rules: [
     {
-      joiner: 'OR',
+      joiner: 'or',
       rules: [
         {
           variableId: 'variable-id-c',
@@ -28,10 +28,10 @@ const baseExpression: Expression = {
 };
 
 const notBinaryExpression: Expression = {
-  joiner: 'AND',
+  joiner: 'and',
   rules: [
     {
-      joiner: 'OR',
+      joiner: 'or',
       rules: [
         {
           variableId: 'variable-id-c',
@@ -203,12 +203,12 @@ describe('expressionToRPN', () => {
 
   it('should return `[true]` for complex expression', () => {
     const complexExpression: Expression = {
-      joiner: 'AND',
+      joiner: 'and',
       rules: [
         baseExpression,
         singleRuleExpression,
         {
-          joiner: 'OR',
+          joiner: 'or',
           rules: [
             notBinaryExpression,
             {
@@ -230,12 +230,12 @@ describe('expressionToRPN', () => {
 
   it('should return `[false]` for complex expression', () => {
     const complexExpression: Expression = {
-      joiner: 'AND',
+      joiner: 'and',
       rules: [
         baseExpression,
         singleRuleExpression,
         {
-          joiner: 'AND',
+          joiner: 'and',
           rules: [
             notBinaryExpression,
             {
