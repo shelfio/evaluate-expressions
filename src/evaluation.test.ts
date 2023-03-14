@@ -1,5 +1,5 @@
 import type {Expression} from './types';
-import {expressionToRPN} from './evaluation';
+import {evaluate} from './evaluation';
 
 const baseExpression: Expression = {
   joiner: 'and',
@@ -73,15 +73,15 @@ const singleRuleExpression: Expression = {
   ],
 };
 
-const variablesValueMap = new Map(
+const variablesValueMap = new Map<string, string>(
   [
     {
       id: 'variable-id-a',
-      value: 'a',
+      value: 'A',
     },
     {
       id: 'variable-id-b',
-      value: 'b',
+      value: 'B',
     },
     {
       id: 'variable-id-c',
@@ -98,20 +98,26 @@ const variablesValueMap = new Map(
   ].map(({id, value}) => [id, value])
 );
 
-describe('expressionToRPN', () => {
-  it('should return `[true]`', () => {
-    expect(expressionToRPN(baseExpression, variablesValueMap)).toEqual([true]);
+describe('evaluate', () => {
+  it('should return `true`', () => {
+    expect(
+      evaluate({expression: baseExpression, variableIdToVariablesMap: variablesValueMap})
+    ).toEqual(true);
   });
 
-  it('should return `[true]` for expression w/ non-binary operator', () => {
-    expect(expressionToRPN(notBinaryExpression, variablesValueMap)).toEqual([true]);
+  it('should return `true` for expression w/ non-binary operator', () => {
+    expect(
+      evaluate({expression: notBinaryExpression, variableIdToVariablesMap: variablesValueMap})
+    ).toEqual(true);
   });
 
-  it('should return `[true]` for single rule when passed correct variable value', () => {
-    expect(expressionToRPN(singleRuleExpression, variablesValueMap)).toEqual([true]);
+  it('should return `true` for single rule when passed correct variable value', () => {
+    expect(
+      evaluate({expression: singleRuleExpression, variableIdToVariablesMap: variablesValueMap})
+    ).toEqual(true);
   });
 
-  it('should return `[false]` for single rule when passed wrong variable value', () => {
+  it('should return `false` for single rule when passed wrong variable value', () => {
     const variablesValueMap = new Map([['variable-id-a', 'wrong-value']]);
 
     const expression: Expression = {
@@ -124,10 +130,10 @@ describe('expressionToRPN', () => {
       ],
     };
 
-    expect(expressionToRPN(expression, variablesValueMap)).toEqual([false]);
+    expect(evaluate({expression, variableIdToVariablesMap: variablesValueMap})).toEqual(false);
   });
 
-  it('should return `[false]` when variables value not passed', () => {
+  it('should return `false` when variables value not passed', () => {
     const variablesValueMap = new Map();
 
     const expression: Expression = {
@@ -140,12 +146,12 @@ describe('expressionToRPN', () => {
       ],
     };
 
-    expect(expressionToRPN(expression, variablesValueMap)).toEqual([false]);
+    expect(evaluate({expression, variableIdToVariablesMap: variablesValueMap})).toEqual(false);
   });
 
   const variableValueSomething = new Map([['variable-id-a', 'something']]);
 
-  it('should return `[true]` for expression and `contains` rule', () => {
+  it('should return `true` for expression and `contains` rule', () => {
     const expression: Expression = {
       rules: [
         {
@@ -156,10 +162,10 @@ describe('expressionToRPN', () => {
       ],
     };
 
-    expect(expressionToRPN(expression, variableValueSomething)).toEqual([true]);
+    expect(evaluate({expression, variableIdToVariablesMap: variableValueSomething})).toEqual(true);
   });
 
-  it('should return `[false]` for expression and `contains` rule', () => {
+  it('should return `false` for expression and `contains` rule', () => {
     const expression: Expression = {
       rules: [
         {
@@ -170,10 +176,10 @@ describe('expressionToRPN', () => {
       ],
     };
 
-    expect(expressionToRPN(expression, variableValueSomething)).toEqual([false]);
+    expect(evaluate({expression, variableIdToVariablesMap: variableValueSomething})).toEqual(false);
   });
 
-  it('should return `[false]` for expression and `not_contains` rule', () => {
+  it('should return `false` for expression and `not_contains` rule', () => {
     const expression: Expression = {
       rules: [
         {
@@ -184,10 +190,10 @@ describe('expressionToRPN', () => {
       ],
     };
 
-    expect(expressionToRPN(expression, variableValueSomething)).toEqual([false]);
+    expect(evaluate({expression, variableIdToVariablesMap: variableValueSomething})).toEqual(false);
   });
 
-  it('should return `[true]` for expression and `not_contains` rule', () => {
+  it('should return `true` for expression and `not_contains` rule', () => {
     const expression: Expression = {
       rules: [
         {
@@ -198,10 +204,10 @@ describe('expressionToRPN', () => {
       ],
     };
 
-    expect(expressionToRPN(expression, variableValueSomething)).toEqual([true]);
+    expect(evaluate({expression, variableIdToVariablesMap: variableValueSomething})).toEqual(true);
   });
 
-  it('should return `[true]` for complex expression', () => {
+  it('should return `true` for complex expression', () => {
     const complexExpression: Expression = {
       joiner: 'and',
       rules: [
@@ -225,10 +231,12 @@ describe('expressionToRPN', () => {
       ],
     };
 
-    expect(expressionToRPN(complexExpression, variablesValueMap)).toEqual([true]);
+    expect(
+      evaluate({expression: complexExpression, variableIdToVariablesMap: variablesValueMap})
+    ).toEqual(true);
   });
 
-  it('should return `[false]` for complex expression', () => {
+  it('should return `false` for complex expression', () => {
     const complexExpression: Expression = {
       joiner: 'and',
       rules: [
@@ -252,6 +260,41 @@ describe('expressionToRPN', () => {
       ],
     };
 
-    expect(expressionToRPN(complexExpression, variablesValueMap)).toEqual([false]);
+    expect(
+      evaluate({expression: complexExpression, variableIdToVariablesMap: variablesValueMap})
+    ).toEqual(false);
+  });
+
+  it('should return `false` for case sensitive option', () => {
+    expect(
+      evaluate({
+        expression: baseExpression,
+        variableIdToVariablesMap: variablesValueMap,
+        options: {caseSensitive: true},
+      })
+    ).toEqual(false);
+  });
+
+  it('should return `true` for case sensitive option', () => {
+    const variablesLowerCaseValueMap = new Map<string, string>(
+      [
+        {
+          id: 'variable-id-a',
+          value: 'a',
+        },
+        {
+          id: 'variable-id-b',
+          value: 'b',
+        },
+      ].map(({id, value}) => [id, value])
+    );
+
+    expect(
+      evaluate({
+        expression: baseExpression,
+        variableIdToVariablesMap: variablesLowerCaseValueMap,
+        options: {caseSensitive: true},
+      })
+    ).toEqual(true);
   });
 });

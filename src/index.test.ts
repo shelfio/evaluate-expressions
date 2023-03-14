@@ -1,10 +1,10 @@
 jest.mock('./evaluation');
 
-import {expressionToRPN} from './evaluation';
+import {evaluate} from './evaluation';
 import {evaluateExpression} from './index';
 
 it('should return true', () => {
-  jest.mocked(expressionToRPN).mockReturnValue([true]);
+  jest.mocked(evaluate).mockReturnValue(true);
 
   const expression = {
     rules: [
@@ -20,7 +20,7 @@ it('should return true', () => {
 });
 
 it('should throw `Invalid expression result` if expressionToRPN return undefined', () => {
-  jest.mocked(expressionToRPN).mockReturnValue([undefined as any]);
+  jest.mocked(evaluate).mockReturnValue(undefined);
 
   const expression = {
     rules: [
