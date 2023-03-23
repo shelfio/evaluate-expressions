@@ -38,6 +38,11 @@ export const evaluate = ({
     const {variableId, operator, value: comparedValue} = expression;
 
     validateRuleInvoke({operator, comparedValue});
+    const passedValue = variableIdToValuesMap.get(variableId);
+
+    if (passedValue === undefined) {
+      return [false];
+    }
 
     return [
       ruleHandlers[operator]({
@@ -58,12 +63,11 @@ type RuleHandlers = Record<
 
 const caseSensitiveRuleHandlers: RuleHandlers = {
   eq: ({passedValue, comparedValue}: RuleParameters) => passedValue === comparedValue,
-  neq: ({passedValue, comparedValue}: RuleParameters) =>
-    passedValue ? passedValue !== comparedValue : false,
+  neq: ({passedValue, comparedValue}: RuleParameters) => passedValue !== comparedValue,
   contains: ({passedValue, comparedValue}: RuleParameters) =>
     passedValue?.includes(comparedValue) ?? false,
   not_contains: ({passedValue, comparedValue}: RuleParameters) =>
-    passedValue ? passedValue?.includes(comparedValue) === false : false,
+    passedValue?.includes(comparedValue) === false,
 };
 const applyRuleWithUpperCase = (
   {passedValue, comparedValue}: RuleParameters,

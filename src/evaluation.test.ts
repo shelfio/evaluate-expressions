@@ -165,6 +165,38 @@ describe('evaluate', () => {
     expect(evaluate({expression, variableIdToVariablesMap: variablesValueMap})).toEqual(false);
   });
 
+  it('should return `false` for `contains` operator when variable value not passed', () => {
+    const variablesValueMap = new Map([]) as any;
+
+    const expression: Expression = {
+      rules: [
+        {
+          variableId: 'variable-id-a',
+          operator: 'contains',
+          value: 'a',
+        },
+      ],
+    };
+
+    expect(evaluate({expression, variableIdToVariablesMap: variablesValueMap})).toEqual(false);
+  });
+
+  it('should return `false` for `eq` operator when variable value not passed', () => {
+    const variablesValueMap = new Map([]) as any;
+
+    const expression: Expression = {
+      rules: [
+        {
+          variableId: 'variable-id-a',
+          operator: 'eq',
+          value: 'a',
+        },
+      ],
+    };
+
+    expect(evaluate({expression, variableIdToVariablesMap: variablesValueMap})).toEqual(false);
+  });
+
   it('should return `false` when variables value not passed', () => {
     const variablesValueMap = new Map();
 
