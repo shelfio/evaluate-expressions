@@ -38,10 +38,15 @@ export const evaluate = ({
     const {variableId, operator, value: comparedValue} = expression;
 
     validateRuleInvoke({operator, comparedValue});
+    const passedValue = variableIdToValuesMap.get(variableId);
+
+    if (passedValue === undefined) {
+      return [false];
+    }
 
     return [
       ruleHandlers[operator]({
-        passedValue: variableIdToValuesMap.get(variableId),
+        passedValue,
         comparedValue,
       }),
     ];
