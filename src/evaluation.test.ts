@@ -133,6 +133,38 @@ describe('evaluate', () => {
     expect(evaluate({expression, variableIdToVariablesMap: variablesValueMap})).toEqual(false);
   });
 
+  it('should return `false` for `neq` operator when variable value not passed', () => {
+    const variablesValueMap = new Map([]) as any;
+
+    const expression: Expression = {
+      rules: [
+        {
+          variableId: 'variable-id-a',
+          operator: 'neq',
+          value: 'a',
+        },
+      ],
+    };
+
+    expect(evaluate({expression, variableIdToVariablesMap: variablesValueMap})).toEqual(false);
+  });
+
+  it('should return `false` for `not_contains` operator when variable value not passed', () => {
+    const variablesValueMap = new Map([]) as any;
+
+    const expression: Expression = {
+      rules: [
+        {
+          variableId: 'variable-id-a',
+          operator: 'not_contains',
+          value: 'a',
+        },
+      ],
+    };
+
+    expect(evaluate({expression, variableIdToVariablesMap: variablesValueMap})).toEqual(false);
+  });
+
   it('should return `false` when variables value not passed', () => {
     const variablesValueMap = new Map();
 

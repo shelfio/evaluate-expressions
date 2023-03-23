@@ -58,11 +58,12 @@ type RuleHandlers = Record<
 
 const caseSensitiveRuleHandlers: RuleHandlers = {
   eq: ({passedValue, comparedValue}: RuleParameters) => passedValue === comparedValue,
-  neq: ({passedValue, comparedValue}: RuleParameters) => passedValue !== comparedValue,
+  neq: ({passedValue, comparedValue}: RuleParameters) =>
+    passedValue ? passedValue !== comparedValue : false,
   contains: ({passedValue, comparedValue}: RuleParameters) =>
     passedValue?.includes(comparedValue) ?? false,
   not_contains: ({passedValue, comparedValue}: RuleParameters) =>
-    passedValue?.includes(comparedValue) === false,
+    passedValue ? passedValue?.includes(comparedValue) === false : false,
 };
 const applyRuleWithUpperCase = (
   {passedValue, comparedValue}: RuleParameters,
