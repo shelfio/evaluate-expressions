@@ -46,7 +46,7 @@ export const evaluate = ({
 
     return [
       ruleHandlers[operator]({
-        passedValue: variableIdToValuesMap.get(variableId),
+        passedValue,
         comparedValue,
       }),
     ];
