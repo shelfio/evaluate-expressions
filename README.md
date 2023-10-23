@@ -41,7 +41,7 @@ This powerful feature makes the library highly flexible and capable of handling 
 
 ## Lightweight and No Dependencies
 
-The `@shelf/evaluate-expressions` library is designed to be lightweight and has no dependencies.
+With just <3KB bundle size, the library is designed to be lightweight and has no dependencies.
 This makes it an ideal choice for projects where performance is a concern or where the size of the dependencies needs to be kept to a minimum.
 It is written in TypeScript, which provides static typing and other advanced features, making the code easier to read and maintain.
 
