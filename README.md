@@ -3,6 +3,8 @@
 > Evaluate expressions that consist of multiple rules and joiners.
 > By evaluating the rules array, the module determines whether the expression is true or false based on the values of the variables and the rules and joiners specified in the input conditions.
 
+[Blog Article](https://medium.com/shelf-io-engineering/taming-the-beast-of-complex-expressions-in-node-js-with-shelf-evaluate-expressions-3b5148518a5f)
+
 ## Install
 
 ```sh
