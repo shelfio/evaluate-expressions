@@ -1,7 +1,7 @@
-jest.mock('./evaluation');
+jest.mock('./evaluation.js');
 
-import {evaluate} from './evaluation';
-import {evaluateExpression} from './index';
+import {evaluate} from './evaluation.js';
+import {evaluateExpression} from './index.js';
 
 it('should return true', () => {
   jest.mocked(evaluate).mockReturnValue(true);
