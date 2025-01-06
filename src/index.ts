@@ -1,5 +1,5 @@
-import type {Expression, VariableWithValue} from './types';
-import {evaluate} from './evaluation';
+import type {Expression, VariableWithValue} from './types.js';
+import {evaluate} from './evaluation.js';
 
 export const evaluateExpression = (
   expression: Expression,
@@ -19,4 +19,4 @@ export const evaluateExpression = (
   return result;
 };
 
-export type {Expression, Rule} from './types';
+export type {Expression, Rule} from './types.js';

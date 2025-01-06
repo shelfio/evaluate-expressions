@@ -1,5 +1,5 @@
-import type {Expression} from './types';
-import {evaluate} from './evaluation';
+import type {Expression} from './types.js';
+import {evaluate} from './evaluation.js';
 
 const baseExpression: Expression = {
   joiner: 'and',

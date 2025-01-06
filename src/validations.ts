@@ -1,4 +1,4 @@
-import type {Expression, JoinerParameters, Rule} from './types';
+import type {Expression, JoinerParameters, Rule} from './types.js';
 
 export const validateJoinerInvoke = ({
   joiner,

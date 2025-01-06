@@ -1,8 +1,5 @@
-import type {Expression} from './types';
-import type {JoinerParameters} from './types';
-import type {Rule, StackElement} from './types';
-import type {RuleParameters} from './types';
-import {validateJoinerInvoke, validateRuleInvoke} from './validations';
+import type {Expression, JoinerParameters, Rule, RuleParameters, StackElement} from './types.js';
+import {validateJoinerInvoke, validateRuleInvoke} from './validations.js';
 
 export const evaluate = ({
   expression,

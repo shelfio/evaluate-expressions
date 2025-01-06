@@ -1,4 +1,4 @@
-import {validateJoinerInvoke, validateRuleInvoke} from './validations';
+import {validateJoinerInvoke, validateRuleInvoke} from './validations.js';
 
 describe('validateJoinerInvoke', () => {
   it('should throw error if joiner is not SINGLE and left is undefined', () => {
