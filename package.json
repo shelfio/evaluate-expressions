@@ -52,7 +52,7 @@
     "@shelf/tsconfig": "0.1.0",
     "@swc/core": "1.12.9",
     "@swc/jest": "0.2.38",
-    "@types/jest": "29.5.14",
+    "@types/jest": "30.0.0",
     "@types/node": "20",
     "eslint": "9.30.1",
     "husky": "9.1.7",
