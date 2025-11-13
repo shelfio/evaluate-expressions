@@ -39,9 +39,6 @@
     ],
     "*.{js,ts,json}": [
       "eslint --fix"
-    ],
-    ".circleci/config.yml": [
-      ".husky/validate-circleci-config.sh"
     ]
   },
   "prettier": "@shelf/prettier-config",
