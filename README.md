@@ -173,8 +173,7 @@ The error message provides information about the cause of the error.
 
 ```sh
 $ git checkout master
-$ pnpm version
-$ pnpm version
+$ pnpm version <major|minor|patch>
 $ pnpm publish
 $ git push origin master --tags
 ```

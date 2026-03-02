@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      version:
+        specifier: ^0.1.2
+        version: 0.1.2
     devDependencies:
       '@shelf/eslint-config':
         specifier: 6.1.0
@@ -2358,6 +2362,14 @@ packages:
     resolution: {integrity: sha512-dYqgNSZbDwkaJ2ceRd9ojCGjBq+mOm9LmtXnAnEGyHhN/5R7iDW2TRw3h+o/jCFxus3P2LfWIIiwowAjANm7IA==}
     engines: {node: '>= 0.4'}
 
+  request@2.12.0:
+    resolution: {integrity: sha512-GcOI9NyUw2lRke4kdbrjQFxu+cLugShENHvcb9QCSLLc/yH3lP7I/7RESxVbYS+AxC/r9rwzks52MRHVoZdb5w==}
+    engines: {'0': node >= 0.3.6}
+    deprecated: request has been deprecated, see https://github.com/request/request/issues/3142
+    bundledDependencies:
+      - form-data
+      - mime
+
   require-directory@2.1.1:
     resolution: {integrity: sha512-fGxEI7+wsG9xrvdjsrlmL22OMTTiHRwAMroiEeMgq8gzoLC/PQr7RsRDSTLUg/bZAZtF+TVIkHc6/4RIKrui+Q==}
     engines: {node: '>=0.10.0'}
@@ -2705,6 +2717,10 @@ packages:
   v8-to-istanbul@9.3.0:
     resolution: {integrity: sha512-kiGUalWN+rgBJ/1OHZsBtU4rXZOfj/7rKQxULKlIzwzQSvMJUUNgPwJEEh7gU6xEVxC0ahoOBvN2YI8GH6FNgA==}
     engines: {node: '>=10.12.0'}
+
+  version@0.1.2:
+    resolution: {integrity: sha512-pU32BxnlMpDnyR8SsRR8amiAmhBZQdTevjYFAMZ9W3eT2wWIJzfjKOH39O1eiCAW4brhyaXe3NpZNFpBAJR56Q==}
+    engines: {node: '>= 0.8.0'}
 
   walker@1.0.8:
     resolution: {integrity: sha512-ts/8E8l5b7kY0vlWLewOkDXMmPdLcVV4GmOQLyxuSswIJsweeFZtAsMF7k1Nszz+TYBQrlYRmzOnr398y1JemQ==}
@@ -5633,6 +5649,8 @@ snapshots:
       gopd: 1.2.0
       set-function-name: 2.0.2
 
+  request@2.12.0: {}
+
   require-directory@2.1.1: {}
 
   resolve-cwd@3.0.0:
@@ -6056,6 +6074,10 @@ snapshots:
       '@jridgewell/trace-mapping': 0.3.31
       '@types/istanbul-lib-coverage': 2.0.6
       convert-source-map: 2.0.0
+
+  version@0.1.2:
+    dependencies:
+      request: 2.12.0
 
   walker@1.0.8:
     dependencies:
