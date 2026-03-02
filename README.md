@@ -8,7 +8,7 @@
 ## Install
 
 ```sh
-$ pnpm add @shelf/evaluate-expressions
+$ pnpm install @shelf/evaluate-expressions
 ```
 
 # Motivation
