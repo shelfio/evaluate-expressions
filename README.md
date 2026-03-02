@@ -8,7 +8,7 @@
 ## Install
 
 ```sh
-$ yarn add @shelf/evaluate-expressions
+$ pnpm install @shelf/evaluate-expressions
 ```
 
 # Motivation
@@ -173,8 +173,9 @@ The error message provides information about the cause of the error.
 
 ```sh
 $ git checkout master
-$ yarn version
-$ yarn publish
+$ pnpm version
+$ pnpm version
+$ pnpm publish
 $ git push origin master --tags
 ```
 

@@ -10,7 +10,6 @@ draft.js
 *.draft.js
 draft.ts
 *.draft.ts
-yarn.lock
 
 .env
 .DS_Store
